@@ -147,12 +147,12 @@ Implemente las funciones para recorrer la estructura: Pair* firstTreeMap(TreeMap
 Pair * firstTreeMap(TreeMap * tree) 
 {
     TreeNode *aux = tree->root;
-    
+    if(aux == NULL) return NULL;
 
     while(aux != NULL)
     {
         tree->current = aux;
-        if(lower_than(aux->pair->key, aux->left->pair->key) == 1) //Si la clave del nodo es menor que la del nodo izquierdo
+        if(tree->lower_than(aux->pair->key, aux->left->pair->key) == 1) //Si la clave del nodo es menor que la del nodo izquierdo
         {
             tree->current = aux;
             return aux->pair;        
