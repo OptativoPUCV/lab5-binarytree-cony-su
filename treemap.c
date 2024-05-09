@@ -152,14 +152,14 @@ Pair * firstTreeMap(TreeMap * tree)
     while(aux != NULL)
     {
         tree->current = aux;
-        if(tree->lower_than(aux->pair->key, aux->left->pair->key) == 1) //Si la clave del nodo es menor que la del nodo izquierdo
+        if(tree->lower_than(aux->pair->key, aux->left->pair->key) == 1)
         {
             tree->current = aux;
             return aux->pair;        
         }
-        else aux = aux->left;
-        
+        else aux = aux->left;   
     }
+    return NULL;
 }
 
     
