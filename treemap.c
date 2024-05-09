@@ -75,10 +75,10 @@ TreeNode * minimum(TreeNode * x)
         return NULL;
     }
 
-    while (x->left != NULL) {
+    while (x->left != NULL) 
+    {
         x = x->left;
     }
-
     return x;
 }
 
@@ -136,12 +136,19 @@ Pair * upperBound(TreeMap * tree, void* key)
         }
         else 
         {
-            if(is_equal(tree, aux->pair->key, key) == 1)
+            if(tree->lower_than(aux->pair->key, key) == 0)
             {
-                ub_node = aux;
-                aux = aux->left;
+                return aux->pair;
             }
-            else aux = aux->right;
+            else 
+            {
+                if(tree->lower_than(aux->pair->key, key) == 1)
+                {
+                    ub_node = aux;
+                    aux = aux->left;
+                }
+                else aux = aux->right;
+            }
         }
     }
 
