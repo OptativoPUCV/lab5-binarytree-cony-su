@@ -238,3 +238,27 @@ treemap.c:60:15: error: unused variable ‘nuevo’ [-Werror=unused-variable]
 cc1: all warnings being treated as errors
 Compilation failed
 525366a
+Thu 09 May 2024 09:23:34 PM UTC: 
+ treemap.c | 24 ++++++++----------------
+ 1 file changed, 8 insertions(+), 16 deletions(-)
+In file included from test.c:4:
+treemap.c: In function ‘insertTreeMap’:
+treemap.c:62:15: error: unused variable ‘aux’ [-Werror=unused-variable]
+   62 |     TreeNode *aux = tree->root;
+      |               ^~~
+treemap.c:61:15: error: unused variable ‘nuevo’ [-Werror=unused-variable]
+   61 |     TreeNode *nuevo = createTreeNode(key, value);
+      |               ^~~~~
+treemap.c: In function ‘upperBound’:
+treemap.c:148:12: error: returning ‘TreeNode *’ from a function with incompatible return type ‘Pair *’ [-Werror=incompatible-pointer-types]
+  148 |     return ub_node
+      |            ^~~~~~~
+treemap.c:148:19: error: expected ‘;’ before ‘}’ token
+  148 |     return ub_node
+      |                   ^
+      |                   ;
+  149 | }
+      | ~                  
+cc1: all warnings being treated as errors
+Compilation failed
+c3f8160
