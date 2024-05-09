@@ -78,3 +78,24 @@ test.c:503:5: error: ‘main’ defined but not used [-Werror=unused-function]
 cc1: all warnings being treated as errors
 Compilation failed
 6c21d64
+Thu 09 May 2024 06:50:23 PM UTC: 
+ treemap.c | 1 +
+ 1 file changed, 1 insertion(+)
+In file included from test.c:4:
+treemap.c: In function ‘upperBound’:
+treemap.c:114:57: error: expected statement before ‘)’ token
+  114 |             if(is_equal(tree, aux->pair->key, key) == 1))
+      |                                                         ^
+treemap.c:119:13: error: ‘else’ without a previous ‘if’
+  119 |             else aux = aux->right;
+      |             ^~~~
+treemap.c:123:41: error: ‘TreeNode’ has no member named ‘pai’; did you mean ‘pair’?
+  123 |     if(ub_node != NULL) return ub_node->pai;
+      |                                         ^~~
+      |                                         pair
+treemap.c:125:1: error: control reaches end of non-void function [-Werror=return-type]
+  125 | }
+      | ^
+cc1: all warnings being treated as errors
+Compilation failed
+8dcc10a
