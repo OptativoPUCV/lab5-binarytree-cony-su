@@ -103,7 +103,7 @@ Pair * upperBound(TreeMap * tree, void* key)
         }
         else 
         {
-            if(is_equal(tree, aux->pair->key, key) == 1))
+            if(is_equal(tree, aux->pair->key, key) == 1)
             {
                 ub_node = aux;
                 aux = aux->left;
@@ -112,7 +112,7 @@ Pair * upperBound(TreeMap * tree, void* key)
         }
     }
 
-    if(ub_node != NULL) return ub_node->pai;
+    if(ub_node != NULL) return ub_node->pair;
     else return NULL;
 }
 
