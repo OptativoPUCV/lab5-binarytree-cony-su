@@ -149,17 +149,13 @@ Pair * firstTreeMap(TreeMap * tree)
     TreeNode *aux = tree->root;
     if(aux == NULL) return NULL;
 
-    while(aux != NULL)
-    {
-        tree->current = aux;
-        if(tree->lower_than(aux->pair->key, aux->left->pair->key) == 1)
+    while(aux->left != NULL)
         {
-            tree->current = aux;
-            return aux->pair;        
+            aux = aux->left;
         }
-        else aux = aux->left;   
-    }
-    return NULL;
+
+        tree->current = aux;
+        return aux->pair;
 }
 
     
