@@ -73,6 +73,7 @@ void insertTreeMap(TreeMap * tree, void* key, void * value)
             {
                 aux->right = nuevo; //la derecha del aux es nuevo
                 nuevo->parent = aux; //el padre de nuevo es aux,conecto
+                tree->current = nuevo;
                 return;
             }
             else //si la derecha no esta vacia
@@ -86,6 +87,7 @@ void insertTreeMap(TreeMap * tree, void* key, void * value)
             {
                 aux->left = nuevo;
                 nuevo->parent = aux;
+                tree->current = nuevo;
                 return;
             }
             else
