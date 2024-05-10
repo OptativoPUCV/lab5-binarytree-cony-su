@@ -76,23 +76,8 @@ void insertTreeMap(TreeMap * tree, void* key, void * value)
     {
         if(is_equal(tree, aux->pair->key, key) == 1) return; //iguales
 
-        if(tree->lower_than(key, aux->pair->key) == 0) //aux mas pequeño que nuevo
+        if(tree->lower_than(key, aux->pair->key) == 1) //aux mas pequeño que nuevo
         { //me voy a la derecha
-            if(aux->right == NULL) //si la derecha esta vacia
-            {
-                TreeNode *nuevo = createTreeNode(key, value);
-                aux->right = nuevo; //la derecha del aux es nuevo
-                nuevo->parent = aux; //el padre de nuevo es aux,conecto
-                tree->current = aux->right;
-                return;
-            }
-            else //si la derecha no esta vacia
-            {
-                aux = aux->right; //bajo por la derecha
-            }
-        }
-        else //aux mas grande que nuevo
-        {
             if(aux->left == NULL)
             {
                 TreeNode *nuevo = createTreeNode(key, value);
@@ -106,9 +91,26 @@ void insertTreeMap(TreeMap * tree, void* key, void * value)
                 aux = aux->left;
             }
         }
+        else //aux mas grande que nuevo
+        {
+            if(aux->right == NULL) //si la derecha esta vacia
+            {
+                TreeNode *nuevo = createTreeNode(key, value);
+                aux->right = nuevo; //la derecha del aux es nuevo
+                nuevo->parent = aux; //el padre de nuevo es aux,conecto
+                tree->current = aux->right;
+                return;
+            }
+            else //si la derecha no esta vacia
+            {
+                aux = aux->right; //bajo por la derecha
+            }
+        }
     }
     
 }
+
+
 
 /*
 mplemente la función TreeNode * minimum(TreeNode * x). Esta función retorna el nodo con la mínima clave ubicado en el subárbol con raiz x. Para obtener el nodo tiene que, a partir del nodo x, irse por la rama izquierda hasta llegar al final del subárbol. Si x no tiene hijo izquierdo se retorna el mismo nodo.
