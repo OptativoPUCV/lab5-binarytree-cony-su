@@ -45,8 +45,6 @@ Implemente la función createTreeMap en el archivo treemap.c. Esta función reci
 TreeMap * createTreeMap(int (*lower_than) (void* key1, void* key2)) 
 {
     TreeMap *arbol = (TreeMap *)malloc(sizeof(TreeMap));
-    arbol->root = NULL;
-    arbol->lower_than = lower_than;
     return arbol;
 }
 
