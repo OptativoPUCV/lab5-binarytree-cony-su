@@ -74,10 +74,10 @@ void insertTreeMap(TreeMap * tree, void* key, void * value)
 
     while(aux != NULL)
     {
-        if(is_equal(tree, aux->pair->key, key) == 1) return; //iguales
+        if(is_equal(tree, aux->pair->key, key)) return; //iguales
 
-        if(tree->lower_than(key, aux->pair->key) == 1) //aux mas pequeño que nuevo
-        { //me voy a la derecha
+        if(tree->lower_than(key, aux->pair->key) == 1) 
+        { 
             if(aux->left == NULL)
             {
                 TreeNode *nuevo = createTreeNode(key, value);
