@@ -240,7 +240,8 @@ Pair * upperBound(TreeMap * tree, void* key)
         else aux = aux->right;
     }
     tree->current = ub_node;
-    return ub_node != NULL ? ub_node->pair : NULL;
+    if (ub_node != NULL) return ub_node->pair;
+    else return NULL;
 }
 
 /*
@@ -279,14 +280,14 @@ Pair * nextTreeMap(TreeMap * tree)
         return aux->pair;//retorna el par del nodo
     }
 
-    else
+    else//si no tiene hijo derecho
     {
         TreeNode *parent = aux->parent;
 
-        while(parent != NULL && aux == parent->right)
+        while(parent != NULL && aux == parent->right) //avanzo 
         {
-            aux = parent;
-            parent = parent->parent;   
+            aux = parent; //aux apunta al padre
+            parent = parent->parent; //se va al padre
         }
         tree->current = parent;
         if (parent != NULL) return parent->pair;
