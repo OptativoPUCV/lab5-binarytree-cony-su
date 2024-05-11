@@ -85,10 +85,7 @@ void insertTreeMap(TreeMap * tree, void* key, void * value)
                 tree->current = aux->left;
                 return;
             }
-            else
-            {
-                aux = aux->left;
-            }
+            else aux = aux->left;
         }
         else //aux mas grande que nuevo
         {
@@ -100,14 +97,9 @@ void insertTreeMap(TreeMap * tree, void* key, void * value)
                 tree->current = aux->right;
                 return;
             }
-            else //si la derecha no esta vacia
-            {
-                aux = aux->right; //bajo por la derecha
-            }
+            else aux = aux->right;
         }
-    }
-    return;
-    
+    }    
 }
 
 
