@@ -142,6 +142,7 @@ void removeNode(TreeMap * tree, TreeNode* node)
     {
         node->parent->left = node->left; //el hijo izquierdo del padre de node es el izquierdo de node
         node->left->parent = node->parent;//el padre del hijo izquierdo de node es el padre de node
+        node->parent = node->left;
         return;
     }
 
@@ -149,6 +150,7 @@ void removeNode(TreeMap * tree, TreeNode* node)
     {
         node->parent->right = node->right; 
         node->right->parent = node->parent;
+        node->parent = node->right;
         return;
     }
 
