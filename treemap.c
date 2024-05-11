@@ -138,17 +138,38 @@ void removeNode(TreeMap * tree, TreeNode* node)
 
     if(node->left != NULL && node->right == NULL)//si tiene solo hijo izquierdo
     {
-        node->parent->left = node->left; //el hijo izquierdo del padre de node es el izquierdo de node
-        node->left->parent = node->parent;//el padre del hijo izquierdo de node es el padre de node
-
-        return;
+        if(node->parent == NULL) //si el nodo es raiz
+        {
+            tree->root = node->left;//el hijo izquierdo es la raiz
+            node->left->parent = NULL;//el padre de nuevo raiz es NULL
+        }
+        else //si no es raiz
+        {
+            if(node->parent->left == node) node->parent->left = node->left; //el hijo izquierdo es el hijo izquierdo del padre
+            else //si no es el hijo izquierdo del padre
+            {
+                node->parent->right = node->left;//el hijo izquierdo es el hijo derecho del padre
+                node->left->parent = node->parent;//el padre de nuevo hijo izquierdo es el padre
+            }
+        }
     }
 
     if(node->right != NULL && node->left == NULL)//si tiene solo hijo derecho
     {
-        node->parent->right = node->right; 
-        node->right->parent = node->parent;
-        return;
+        if(node->parent == NULL) //si el nodo es raiz
+        {
+            tree->root = node->right;//el hijo izquierdo es la raiz
+            node->right->parent = NULL;//el padre de nuevo raiz es NULL
+        }
+        else //si no es raiz
+        {
+            if(node->parent->right == node) node->parent->right = node->right; //el hijo izquierdo es el hijo izquierdo del padre
+            else 
+            {
+                node->parent->left = node->right;
+                node->right->parent = node->parent;
+            }
+        } 
     }
 
     if(node->left != NULL && node->right != NULL) //si tiene dos hijos 
