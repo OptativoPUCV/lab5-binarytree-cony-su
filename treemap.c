@@ -286,15 +286,11 @@ Pair * nextTreeMap(TreeMap * tree)
         while(parent != NULL && aux == parent->right)
         {
             aux = parent;
-            parent = parent->parent;
-            
+            parent = parent->parent;   
         }
         tree->current = parent;
-        if (parent != NULL) {
-            return parent->pair;
-        } else {
-            return NULL;
-        }
+        if (parent != NULL) return parent->pair;
+        else return NULL;
     }
   
     
