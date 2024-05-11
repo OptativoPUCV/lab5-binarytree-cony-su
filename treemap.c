@@ -70,6 +70,7 @@ void insertTreeMap(TreeMap * tree, void* key, void * value)
     }
     
     TreeNode *aux = tree->root;
+    TreeNode *nuevo = createTreeNode(key, value);
 
     while(aux != NULL)
     {
@@ -79,7 +80,6 @@ void insertTreeMap(TreeMap * tree, void* key, void * value)
         { 
             if(aux->left == NULL)
             {
-                TreeNode *nuevo = createTreeNode(key, value);
                 aux->left = nuevo;
                 nuevo->parent = aux;
                 tree->current = aux->left;
@@ -87,11 +87,10 @@ void insertTreeMap(TreeMap * tree, void* key, void * value)
             }
             else aux = aux->left;
         }
-        else //aux mas grande que nuevo
+        else 
         {
             if(aux->right == NULL) //si la derecha esta vacia
             {
-                TreeNode *nuevo = createTreeNode(key, value);
                 aux->right = nuevo; //la derecha del aux es nuevo
                 nuevo->parent = aux; //el padre de nuevo es aux,conecto
                 tree->current = aux->right;
