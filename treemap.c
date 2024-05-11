@@ -244,7 +244,7 @@ Pair * upperBound(TreeMap * tree, void* key)
 }
 
 /*
-Implemente las funciones para recorrer la estructura: Pair* firstTreeMap(TreeMap* tree) retorna el primer Pair del mapa (el menor). Pair* nextTreeMap(TreeMap* tree) retornar el siguiente Pair del mapa a partir del puntero TreeNode* current. Recuerde actualizar este puntero.
+Implemente las funciones para recorrer la estructura: Pair* firstTreeMap(TreeMap* tree) retorna el primer Pair del mapa (el menor). 
 */
 
 //IS_EQUAL retorna 1 si las claves son iguales y 0 si no lo son
@@ -262,20 +262,36 @@ Pair * firstTreeMap(TreeMap * tree)
     return aux->pair;
 }
 
-    
+/*
+Pair* nextTreeMap(TreeMap* tree) retornar el siguiente Pair del mapa a partir del puntero TreeNode* current. Recuerde actualizar este puntero.
+*/
+
 Pair * nextTreeMap(TreeMap * tree) 
 {
-    /*TreeNode *aux = tree->current;
+    TreeNode *aux = tree->current;//aux apunta al nodo actual
 
-    if(aux == NULL) return NULL;
+    if(aux == NULL || tree == NULL) return NULL;
 
-    if(aux->right != NULL)
+    if(aux->right != NULL) //si tiene hijo derecho
     {
-        aux = minimum(aux->right);
+        aux = minimum(aux->right);//aux apunta al menor de la derecha
         tree->current = aux;
-        return aux->pair;
+        return aux->pair;//retorna el par del nodo
     }
-    */
-    return NULL;
+
+    else
+    {
+        TreeNode *parent = aux->parent;
+
+        while(parent != NULL && aux == parent->right)
+        {
+            aux = parent;
+            parent = parent->parent;
+            
+        }
+        tree->current = parent;
+        return parent != NULL ? parent->pair : NULL;
+    }
+  
     
 }
