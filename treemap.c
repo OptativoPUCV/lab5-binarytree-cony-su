@@ -290,7 +290,11 @@ Pair * nextTreeMap(TreeMap * tree)
             
         }
         tree->current = parent;
-        return parent != NULL ? parent->pair : NULL;
+        if (parent != NULL) {
+            return parent->pair;
+        } else {
+            return NULL;
+        }
     }
   
     
