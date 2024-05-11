@@ -45,9 +45,11 @@ Implemente la función createTreeMap en el archivo treemap.c. Esta función reci
 TreeMap * createTreeMap(int (*lower_than) (void* key1, void* key2)) 
 {
     TreeMap *arbol = (TreeMap *)malloc(sizeof(TreeMap));
+    arbol->root = NULL;
+    arbol->current = NULL;
+    arbol->lower_than = lower_than;
     return arbol;
 }
-
 /*
  Implemente la función void insertTreeMap(TreeMap * tree, void* key, void * value). Esta función inserta un nuevo dato (key,value) en el árbol y hace que el current apunte al nuevo nodo. Para insertar un dato, primero debe realizar una búsqueda para encontrar donde debería ubicarse. Luego crear el nuevo nodo y enlazarlo. Si la clave del dato ya existe retorne sin hacer nada (recuerde que el mapa no permite claves repetidas).
 */
@@ -104,6 +106,7 @@ void insertTreeMap(TreeMap * tree, void* key, void * value)
             }
         }
     }
+    return;
     
 }
 
@@ -215,7 +218,7 @@ Pair * firstTreeMap(TreeMap * tree)
     
 Pair * nextTreeMap(TreeMap * tree) 
 {
-    TreeNode *aux = tree->current;
+    /*TreeNode *aux = tree->current;
 
     if(aux == NULL) return NULL;
 
@@ -225,5 +228,7 @@ Pair * nextTreeMap(TreeMap * tree)
         tree->current = aux;
         return aux->pair;
     }
+    */
+    return NULL;
     
 }
