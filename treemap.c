@@ -128,13 +128,11 @@ void removeNode(TreeMap * tree, TreeNode* node)
         {
             tree->root = NULL;
             tree->current = NULL;
-            return;
         }
         else //si no es raiz
         {
             if(node->parent->left == node) node->parent->left = NULL;
             else node->parent->right = NULL;
-            return;
         }
     }
 
@@ -159,10 +157,9 @@ void removeNode(TreeMap * tree, TreeNode* node)
         node->pair->key = min->pair->key;
         node->pair->value = min->pair->value;
         removeNode(tree, min);
-        return;
     }
-
     
+    return;
 }
 
 void eraseTreeMap(TreeMap * tree, void* key){
